@@ -1,0 +1,21 @@
+#banner {
+    background-image: "./images/cover.jpg";
+}
+
+.googleplay {
+    width: 100px;
+    align-items:flex-end;
+    
+}
+
+.container > div {
+    padding: 12px;
+    margin: 12px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+
+}
