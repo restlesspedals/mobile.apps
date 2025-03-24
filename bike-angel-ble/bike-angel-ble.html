@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bike Angel BLE</title>
-    <link rel="icon" type="image/x-icon" href="./img/restlesspedals-round.webp">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -44,6 +43,297 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <h2>Components</h2>
+    <ul class="list-group">
+      <li class="list-group-item"><a href="https://www.aliexpress.com/item/1005006349109886.html">Arduino Pro Mini 3.3V</a></li>
+      <li class="list-group-item"><a href="https://www.aliexpress.com/item/32817938949.html">HM-10 BLE 4.0 Bluetooth module or compatible</a></li>
+      <li class="list-group-item">Buzzer</li>
+      <li class="list-group-item"><a href="https://www.aliexpress.com/item/1005005859152818.html">SW-420 ball switch</a></li>
+      <li class="list-group-item"><a href="https://www.aliexpress.com/item/1005001276119180.html">Mini DC-DC boost converter to 5V or similar</a></li>
+      <li class="list-group-item">resistors (1x~220Ω for buzzer, 1x~10kΩ and 2xlarge (100kΩ - 1MΩ) for reading the battery level)</li>
+      <li class="list-group-item">3.7V battery</li>
+    </ul>
+</div>
+
+<div class="container">
+  <h2>Wiring</h2>
+  <img src="./img/wiring.png" class="img-fluid" alt="wiring">
+  </div>
+
+  <div class="container">
+    <h2>Code</h2>
+    <pre  class="bg-light p-3 rounded border">
+      <code>
+        #include &lt;SoftwareSerial.h&gt;
+        #include &lt;LowPower.h&gt;
+        #include &lt;EEPROM.h&gt;
+  
+        #define BLE_TX 3 // HM-10 TX pin connected to Arduino pin 3
+        #define BLE_RX 9 // HM-10 RX pin connected to Arduino interrupt pin 9
+        #define BUZZER_PIN 6
+        #define SENSOR_PIN 2 // ball sensor on interrupt pin
+        #define BATTERY_PIN A0 // measure battery level
+        
+        // customize low, med and high sensibility levels
+        #define LOW_SENS_FACTOR 5
+        #define MED_SENS_FACTOR 3
+        #define HIGH_SENS_FACTOR 1
+        
+        // For a 3.7V battery, 3.2V would be low voltage. Since the voltage divider
+        // has equal resistors, the voltage read is half, so 1.6V
+        #define LOW_BATTERY_THRESHOLD 1.76 // for the 3.3V model
+        
+        // ingress commands
+        #define CMD_START 0xFF // start movement detection
+        #define CMD_STOP 0xFE // stop movement detection
+        #define CMD_PING 0xFC // test connection
+        #define CMD_BEEP 0xFB // ring alarm
+        #define CMD_LOW 0xED // sensitivity
+        #define CMD_MED 0xEE // sensitivity
+        #define CMD_HIGH 0xEF // sensitivity
+        #define CMD_SAVE_CONFIG 0xAA // saves config variables (sensibility, duration, etc)
+        #define CMD_MUTE_ON 0xAB // mute the alarm
+        #define CMD_MUTE_OFF 0xAC
+        #define CMD_READ_CONFIG 0xAD // send to android app the current configuration (sensibility, duration, etc)
+        #define CMD_BEACON_ON 0xEB // send beacon at regular intervals
+        #define CMD_BEACON_OFF 0xEC
+        #define CMD_DURATION 0xB8 //0xB8 - 0xBF alarm duration
+        
+        // egress commands
+        #define CMD_PONG 0xFD // response to CMD_PING
+        #define CMD_BEACON 0xEA // send beacon signal to let the android app know the system is functional
+        #define CMD_ALARM 0xFA
+        #define CMD_LOW_BATTERY 0xDC
+        // Also, ACK signal for ingress commands, as CMD - 8
+        
+        // Addresses in EEPROM to store variables
+        #define ADDR_BEACON 0
+        #define ADDR_MUTED 1
+        #define ADDR_SENSITIVITY 2
+        #define ADDR_DURATION 3
+        
+        // write buffer
+        String buffer;
+        
+        // config vars
+        boolean sendBeacon = false;
+        boolean isDetectionActive = true;
+        boolean isMuted = false;
+        unsigned short int alarmDuration = 1500;
+        unsigned char sensitivity = 1;
+        
+        // interrupt flags
+        volatile bool alarmInterrupt = false;
+        volatile bool rxInterrupt = false;
+        
+        // ball sensor is very sensitive, on a slight move it could trigger tens of times
+        // The number of interrupts is directly linked to the alarm sensibility level
+        volatile unsigned long ballMovement = 0; 
+        
+        SoftwareSerial BLE(BLE_TX, BLE_RX);
+        
+        // interrupt ISR
+        void wakeUpOnRX() {
+          rxInterrupt = true;
+        }
+        
+        // interrupt ISR
+        void detectAlarm() {
+          ballMovement += 1;
+          alarmInterrupt = true;
+        }
+        
+        void setup() {
+          pinMode(LED_BUILTIN, OUTPUT);
+        
+          pinMode(SENSOR_PIN, INPUT_PULLUP); // Watchdog pin to wake up on movement
+          pinMode(BLE_TX, INPUT_PULLUP); // Watchdog pin to wake up on BLE comms
+          pinMode(BATTERY_PIN, INPUT); // battery level
+          pinMode(BLE_RX, OUTPUT); // BLE comms
+          pinMode(BUZZER_PIN, OUTPUT); // piezzo buzzer
+          digitalWrite(BUZZER_PIN, HIGH);
+          
+          attachInterrupt(digitalPinToInterrupt(SENSOR_PIN), detectAlarm, FALLING);
+          attachInterrupt(digitalPinToInterrupt(BLE_TX), wakeUpOnRX, FALLING);
+        
+          buffer = "";
+          Serial.begin(9600); // Initialize Serial Monitor
+          BLE.begin(9600); // Initialize BLE communication
+        
+          // load config vars
+          EEPROM.get(ADDR_BEACON, sendBeacon);
+          EEPROM.get(ADDR_MUTED, isMuted);
+          EEPROM.get(ADDR_SENSITIVITY, sensitivity);
+          EEPROM.get(ADDR_DURATION, alarmDuration);
+        
+          validateEEPROMvars(); // if values from EEPROM are invalid, init with default
+        
+          Serial.println("Starting..");
+          delay(200);
+        }
+        
+        void loop() {
+          // read battery level
+          int adcValue = analogRead(BATTERY_PIN);
+          float voltage = (adcValue / 1023.0) * 3.3; // for 3.3V arduino
+          Serial.print(voltage);
+          Serial.println(" V");
+          delay(100);
+        
+          // read for incoming commands before sending signals back (low battery, beacon, alarm)
+          if (BLE.available() || rxInterrupt) {
+            readIncoming(); 
+            delay(100); 
+            rxInterrupt = false;
+          }
+          
+          // send low battery signal
+          if (voltage &lt; LOW_BATTERY_THRESHOLD){
+            Serial.println("Low battery");
+            buffer += (char)CMD_LOW_BATTERY;
+          }
+        
+          // detect alarms
+          if (alarmInterrupt && isDetectionActive) {
+        //    Serial.println(ballMovement);
+            // sensitivity * 5 determines how sensitive the movement detection is
+            if (sensitivity * 5 &lt; ballMovement) {
+        
+              Serial.println("ALARM!");
+              buffer += (char)CMD_ALARM;
+              beep();
+            }
+            ballMovement = 0;
+            alarmInterrupt = false;
+          }
+        
+          if (!isDetectionActive)
+            ballMovement = 0;
+        
+          if (sendBeacon){
+            buffer += (char)CMD_BEACON;
+          }
+        
+          sendBuffer();
+          
+          // low power sleep saves battery
+          LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF); 
+        }
+        
+        void readIncoming() {
+          delay(500); // Allow buffer to fill, if BLE data is incoming
+          while (BLE.available()) {
+            byte command = BLE.read();
+            byte response = runCommand(command);
+        
+            // send ACK signal back to the android app
+            if (response != 0x00) {
+              // confirm on Arduino side (blink builtin led)
+              digitalWrite(LED_BUILTIN, HIGH);  
+              delay(400);                       
+              digitalWrite(LED_BUILTIN, LOW);    
+        
+              buffer += (char)response;
+              Serial.print("CMD: "); Serial.println(command, HEX);
+            }
+          }
+        }
+        
+        // ring alarm
+        void beep() {
+          if (isMuted) {
+            delay(alarmDuration);
+            return;
+          }
+          digitalWrite(BUZZER_PIN, LOW);
+          delay(alarmDuration);
+          digitalWrite(BUZZER_PIN, HIGH);
+        }
+        
+        // if values read from EEPROM are not valid, initialize with default
+        void validateEEPROMvars() {
+          bool initVars = false;
+          if (sendBeacon != 0 && sendBeacon != 1) initVars = true;
+          if (isMuted != 0 && isMuted != 1) initVars = true;
+          if (sensitivity > 255) initVars = true;
+          if (alarmDuration % 250 != 0) initVars = true;
+        
+          if (initVars) {
+            sendBeacon = false;
+            isMuted = false;
+            sensitivity = 1;
+            alarmDuration = 1500;
+            runSaveConfig();
+          }
+        }
+        
+        void runSaveConfig() {
+          EEPROM.put(ADDR_BEACON, sendBeacon);
+          EEPROM.put(ADDR_MUTED, isMuted);
+          EEPROM.put(ADDR_SENSITIVITY, sensitivity);
+          EEPROM.put(ADDR_DURATION, alarmDuration);
+          Serial.println("Saved Config");
+        }
+        
+        byte getCurrentConfig() {
+          unsigned short int sensitivityEncoded;
+          if (sensitivity == LOW_SENS_FACTOR) sensitivityEncoded = 0;
+          if (sensitivity == MED_SENS_FACTOR) sensitivityEncoded = 1;
+          if (sensitivity == HIGH_SENS_FACTOR) sensitivityEncoded = 2;
+          
+          unsigned short int durationEncoded = (alarmDuration / 250 - 1) % 8; // ensure durationEncoded takes only 3 bits
+          
+          byte encodedByte1 = (5 &lt;&lt; 4) | (isMuted &lt;&lt; 3) | durationEncoded;
+          byte encodedByte2 = (6 &lt;&lt; 4) | (isDetectionActive &lt;&lt; 3) | (sendBeacon &lt;&lt; 2) | sensitivityEncoded;
+        
+          buffer += (char)encodedByte1;
+          buffer += (char)encodedByte2;
+        }
+        
+        void sendBuffer() {
+            if (buffer.length() > 0) {
+                Serial.println(buffer.length());
+                BLE.write(buffer.c_str(), buffer.length());
+                buffer = ""; // Clear buffer after sending
+                BLE.flush();
+                delay(300);
+            }
+        }
+        
+        byte runCommand(byte cmd) {
+        //  Serial.print(" "); Serial.println(cmd, HEX);
+          byte reponse = cmd - 8;
+          if (cmd >= CMD_DURATION && cmd &lt;= CMD_DURATION + 7) {
+            alarmDuration = (cmd - CMD_DURATION + 1) * 250;
+            return reponse;
+          }
+          
+          switch (cmd) {
+            case CMD_START:       isDetectionActive = true;           break;
+            case CMD_STOP:        isDetectionActive = false;          break;
+            case CMD_LOW:         sensitivity = LOW_SENS_FACTOR;      break;
+            case CMD_MED:         sensitivity = MED_SENS_FACTOR;      break;
+            case CMD_HIGH:        sensitivity = HIGH_SENS_FACTOR;     break;
+            case CMD_PING:        buffer += (char)CMD_PONG;           break;
+            case CMD_SAVE_CONFIG: runSaveConfig();                    break;
+            case CMD_READ_CONFIG: getCurrentConfig();                 break;
+            case CMD_BEEP:        beep();                             break;
+            case CMD_MUTE_ON:     isMuted = true;                     break;
+            case CMD_MUTE_OFF:    isMuted = false;                    break;
+            case CMD_BEACON_ON:   sendBeacon = true;                  break;
+            case CMD_BEACON_OFF:  sendBeacon = false;                 break;
+            
+            default: reponse = 0x00; // No response for unknown commands
+          }
+        
+          return reponse;
+        }
+          
+      </code>
+    </pre>
+    </div>
+
     <div class="container">
       <footer
         class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
