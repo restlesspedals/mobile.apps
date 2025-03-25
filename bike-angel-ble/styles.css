@@ -3,14 +3,31 @@
 }
 
 .googleplay {
-    width: 100px;
+    width: 120px;
     align-items:flex-end;
+    
     
 }
 
 .container > div {
     padding: 12px;
     margin: 12px;
+}
+
+.container {
+    margin-top: 2rem;
+}
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    vertical-align: bottom;
+}
+
+.card .card-body a {
+    width: 120px;
 }
 
 .card-img-top {
