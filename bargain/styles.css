@@ -1,0 +1,29 @@
+.intro-hero {
+    display: flex;
+    color: #F8EEDF; 
+    background: linear-gradient(35deg, #3e0909 0%, #8E1616 50%, #903434 100%);
+  }
+  
+  .btn-primary {
+    background-color: #E8C999 !important;
+    border-color: #E8C999 !important;
+    color: #000000 !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: #f2eade !important;
+    border-color: #E8C999 !important;
+    color: #000000 !important;
+  }
+
+  h1 img {
+    vertical-align: middle;
+  }
+
+  .disabled-link {
+    pointer-events: none;
+    color: gray; 
+    text-decoration: none;
+    cursor: default;
+    filter: grayscale(100%);
+  }
