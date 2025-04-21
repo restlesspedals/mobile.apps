@@ -57,9 +57,11 @@ h1 img {
   width: 32px;
   height: 32px;
   font-size: 32px;
-  /* for Font Awesome */
+
   display: inline-block;
   vertical-align: middle;
   object-fit: contain;
-  /* important for images */
+
 }
+
+/* https://colorhunt.co/palette/0000008e1616e8c999f8eedf */
