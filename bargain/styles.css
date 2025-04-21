@@ -41,12 +41,13 @@ h1 img {
 
 .googleplay {
   width: 200px;
-  align-items:flex-end;
-  }
+  align-items: flex-end;
+}
 
-  .social-links {
-    display: flex;
-  }
+.social-links {
+  display: flex;
+}
+
 .social-links a {
   margin: 6px;
   color: #000000;
@@ -55,8 +56,10 @@ h1 img {
 .social-icon {
   width: 32px;
   height: 32px;
-  font-size: 32px; /* for Font Awesome */
+  font-size: 32px;
+  /* for Font Awesome */
   display: inline-block;
   vertical-align: middle;
-  object-fit: contain; /* important for images */
+  object-fit: contain;
+  /* important for images */
 }

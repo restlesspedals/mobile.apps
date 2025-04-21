@@ -9,3 +9,30 @@
     width: 48px;
     height: 48px;
 }
+
+.logo {
+    padding: 6px;
+    width: 120px;
+    height: 120px;
+}
+
+
+.social-links {
+    display: flex;
+  }
+  
+  .social-links a {
+    margin: 6px;
+    color: #000000;
+  }
+  
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+    /* for Font Awesome */
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+    /* important for images */
+  }
