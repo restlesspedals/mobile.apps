@@ -36,3 +36,24 @@
     object-fit:scale-down;
 
 }
+
+.social-links {
+    display: flex;
+  }
+  
+  .social-links a {
+    margin: 6px;
+    color: #000000;
+  }
+  
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+  
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+  
+  }
+  
