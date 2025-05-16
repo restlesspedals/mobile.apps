@@ -36,3 +36,15 @@
     object-fit: contain;
 
   }
+
+  .background {
+    background-color: #efe9d9 !important;
+  }
+
+    .background-bargain {
+    background-color: #ac845f !important;
+  }
+
+    .background-bike-angel {
+    background-color: #ddd3be !important;
+  }
