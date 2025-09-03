@@ -1,0 +1,74 @@
+.intro-hero {
+  display: flex;
+  color: #F8EEDF;
+  background: linear-gradient(35deg, #3e0909 0%, #8E1616 50%, #903434 100%);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Poppins', serif;
+}
+p, a {
+  font-family: 'Roboto', sans-serif;
+}
+
+.textured-background {
+  background-color: #f8eedf;
+  background-image: url("./img/wide-rectangles.png")
+}
+
+.btn-primary {
+  background-color: #E8C999 !important;
+  border-color: #E8C999 !important;
+  color: #000000 !important;
+}
+
+.btn-primary:hover {
+  background-color: #f2eade !important;
+  border-color: #E8C999 !important;
+  color: #000000 !important;
+}
+
+h1 img {
+  vertical-align: middle;
+}
+
+.disabled-link {
+  pointer-events: none;
+  color: gray;
+  text-decoration: none;
+  cursor: default;
+  filter: grayscale(100%);
+}
+
+.center-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.googleplay {
+  width: 200px;
+  align-items: flex-end;
+}
+
+.social-links {
+  display: flex;
+}
+
+.social-links a {
+  margin: 6px;
+  color: #000000;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+
+}
+
+/* https://colorhunt.co/palette/0000008e1616e8c999f8eedf */

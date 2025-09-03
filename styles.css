@@ -1,50 +1,63 @@
 .googleplay {
-    width: 100px;
-    align-items:flex-end;
-    
+  width: 100px;
+  align-items: flex-end;
+
 }
 
 .bi {
-    padding: 6px;
-    width: 48px;
-    height: 48px;
+  padding: 6px;
+  width: 48px;
+  height: 48px;
 }
 
 .logo {
-    padding: 6px;
-    width: 120px;
-    height: 120px;
+  padding: 6px;
+  width: 120px;
+  height: 120px;
 }
 
 
 .social-links {
-    display: flex;
-  }
-  
-  .social-links a {
-    margin: 6px;
-    color: #000000;
-  }
-  
-  .social-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 32px;
+  display: flex;
+}
 
-    display: inline-block;
-    vertical-align: middle;
-    object-fit: contain;
+.social-links a {
+  margin: 6px;
+  color: #000000;
+}
 
-  }
+.social-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
 
-  .background {
-    background-color: #efe9d9 !important;
-  }
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
 
-    .background-bargain {
-    background-color: #ac845f !important;
-  }
+}
 
-    .background-bike-angel {
-    background-color: #ddd3be !important;
-  }
+a.disabled {
+  pointer-events: none;       /* Prevent clicking */
+  cursor: not-allowed;        /* Show disabled cursor */
+  opacity: 0.5;               /* Gray it out visually */
+  filter: grayscale(100%);    /* Optional: make images grayscale */
+  text-decoration: none;      /* Remove underline if any */
+}
+
+
+.background {
+  background-color: #efe9d9 !important;
+}
+
+.background-bargain {
+  background-color: #ac845f !important;
+}
+
+.background-bike-angel {
+  background-color: #ddd3be !important;
+}
+
+.background-restlesspedals {
+  background-color: #d0b297 !important;
+}
