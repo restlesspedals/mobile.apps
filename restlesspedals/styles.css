@@ -29,13 +29,13 @@ p, a {
 .btn-primary {
   background-color: #48A6A7 !important;
   border-color: #006A71 !important;
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .btn-primary:hover {
   background-color: #76B8B9 !important;
   border-color: #006A71 !important;
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .btn-outline-primary {
