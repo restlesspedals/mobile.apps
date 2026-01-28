@@ -57,3 +57,8 @@
   
   }
   
+  .black-icon {
+  filter: brightness(0%);
+  /* or even more reliable in some cases: */
+  /* filter: brightness(0) saturate(0); */
+}

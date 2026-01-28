@@ -71,4 +71,10 @@ h1 img {
 
 }
 
+.black-icon {
+  filter: brightness(0%);
+  /* or even more reliable in some cases: */
+  /* filter: brightness(0) saturate(0); */
+}
+
 /* https://colorhunt.co/palette/0000008e1616e8c999f8eedf */

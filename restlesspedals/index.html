@@ -1,235 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<!-- Start cookieyes banner -->
-<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/55541bb86c998f36f18eafbc/script.js"></script>
-<!-- End cookieyes banner -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QK2BT0F8DR"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-QK2BT0F8DR');
-</script>
-<meta charset="UTF-8">
-<meta name="description" content="Embark on epic cycling adventures in Restless Pedals! Manage resources, plan routes, and conquer challenges in this idle travel game for Android.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restless Pedals</title>
-<link rel="shortcut icon" href="./img/restlesspedals-logo.webp">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link rel="stylesheet" href="./styles.css" />
+  <!-- Start cookieyes banner -->
+  <script id="cookieyes" type="text/javascript"
+    src="https://cdn-cookieyes.com/client_data/55541bb86c998f36f18eafbc/script.js"></script>
+  <!-- End cookieyes banner -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK2BT0F8DR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-QK2BT0F8DR');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="description"
+    content="Embark on epic cycling adventures in Restless Pedals! Manage resources, plan routes, and conquer challenges in this idle travel game for Android.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restless Pedals</title>
+  <link rel="shortcut icon" href="./img/restlesspedals-logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-<div class="container">
-
-  <!-- Hero Section -->
-<!-- HeroGrade Section -->
-<section class="intro-hero position-relative overflow-hidden d-flex flex-column">
-  <!-- Full-screen featured illustration -->
-  <img src="./img/featured-graphic-large.webp" 
-       alt="Restless Pedals Adventure" 
-       class="featured-graphic position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
-
-  <!-- Logo - Top Left -->
-  <div class="position-absolute top-0 start-0 p-4 z-10">
-    <img src="./img/restlesspedals-cut.png" 
-         alt="Restless Pedals Logo" 
-         class="logo-overlay" 
-         style="height: 90px; width: auto; filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));">
-  </div>
-
-  <!-- Title - Top Center -->
-  <div class="text-center mt-5 pt-5 pt-md-0 z-10 flex-shrink-0">
-    <h1 class="display-2 display-md-1 fw-bold text-white mb-0" 
-        style="text-shadow: 3px 3px 12px rgba(0,0,0,0.6);">
-      Restless Pedals
-    </h1>
-  </div>
-
-  <!-- Spacer that pushes CTAs to bottom -->
-  <div class="flex-grow-1"></div>
-
-  <!-- Bottom Content: Description + Buttons -->
-  <div class="container pb-5 mb-4 z-10">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center">
-        <p class="lead text-white mb-4 opacity-90" style="font-size: 1.4rem; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-          Embark on thrilling cycling journeys to real-world travel destinations.<br>
-          Manage your resources, strategize routes, and connect with fellow adventurers.
-        </p>
-
-        <div class="d-flex flex-column flex-sm-row gap-4 justify-content-center align-items-center">
-          <a href="https://play.google.com/store/apps/details?id=com.lovin.restlesspedals" 
-             class="btn btn-primary btn-lg px-5 py-3 shadow-lg" target="_blank">
-            <i class="fab fa-google-play me-2"></i> Play Now on Google Play
-          </a>
-          <a href="https://www.patreon.com/restlesspedals" 
-             class="btn btn-outline-light btn-lg px-5 py-3 shadow-lg" target="_blank">
-            <i class="fab fa-patreon me-2"></i> Support on Patreon
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <!-- Features Section -->
-  <section class="py-5 textured-background">
-    <div class="container">
-      <h2 class="text-center mb-5">Discover the Adventure</h2>
-      <div class="row">
-        <div class="col-md-4 mb-4 animate-slide-up">
-          <div class="card h-100 text-center border-0 shadow-sm">
-            <div class="card-body">
-              <i class="fas fa-cogs fa-3x text-primary mb-3"></i>
-              <h5 class="card-title">Resource Management</h5>
-              <p class="card-text">Balance your inventory of gear, food, and tools while facing tough choices on what to pack for the road ahead.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 animate-slide-up" style="animation-delay: 0.2s;">
-          <div class="card h-100 text-center border-0 shadow-sm">
-            <div class="card-body">
-              <i class="fas fa-globe fa-3x text-primary mb-3"></i>
-              <h5 class="card-title">Map-Based Strategy</h5>
-              <p class="card-text">Plan routes inspired by real EuroVelo paths, adapting to terrain, weather, and unexpected events.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4 animate-slide-up" style="animation-delay: 0.4s;">
-          <div class="card h-100 text-center border-0 shadow-sm">
-            <div class="card-body">
-              <i class="fas fa-users fa-3x text-primary mb-3"></i>
-              <h5 class="card-title">Community Interactions</h5>
-              <p class="card-text">Trade items, share tips, and compete with players worldwide in this online idle experience.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-<!-- Gallery Section - Multi-Image Carousel -->
-<section class="py-5 bg-light">
   <div class="container">
-    <h2 class="text-center mb-5 fw-bold">See It in Action</h2>
 
-    <div id="multiScreenshotCarousel" class="carousel slide shadow-lg rounded-3 overflow-hidden" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-          <div class="row g-3 g-md-4 justify-content-center align-items-center px-4 py-5">
-            <div class="col-6 col-md-4">
-              <img src="./img/1_bikes.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait" alt="Select your bike">
-              <p class="text-center mt-2 mb-0 small text-muted fw-medium">Choose Your Bike</p>
-            </div>
-            <div class="col-6 col-md-4">
-              <img src="./img/2_bags.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait" alt="Pack your bags">
-              <p class="text-center mt-2 mb-0 small text-muted fw-medium">Pack Smart</p>
-            </div>
-            <div class="col-6 col-md-4 d-none d-md-block">
-              <img src="./img/3_inventory.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait" alt="Manage inventory">
-              <p class="text-center mt-2 mb-0 small text-muted fw-medium">Manage Inventory</p>
-            </div>
-          </div>
-        </div>
+    <!-- Hero Section -->
+    <!-- HeroGrade Section -->
+    <section class="intro-hero position-relative overflow-hidden d-flex flex-column">
+      <!-- Full-screen featured illustration -->
+      <img src="./img/featured-graphic-large.webp" alt="Restless Pedals Adventure"
+        class="featured-graphic position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
 
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-          <div class="row g-3 g-md-4 justify-content-center align-items-center px-4 py-5">
-            <div class="col-6 col-md-4">
-              <img src="./img/4_market.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait" alt="In-game market">
-              <p class="text-center mt-2 mb-0 small text-muted fw-medium">Global Market</p>
-            </div>
-            <div class="col-6 col-md-4">
-              <img src="./img/5_cafe.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait" alt="Meet players at cafes">
-              <p class="text-center mt-2 mb-0 small text-muted fw-medium">Café Encounters</p>
-            </div>
-            <div class="col-6 col-md-4 d-none d-md-block">
-              <img src="./img/8_knowledge.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait" alt="Knowledge skill tree">
-              <p class="text-center mt-2 mb-0 small text-muted fw-medium">Knowledge Tree</p>
+      <!-- Logo - Top Left -->
+      <div class="position-absolute top-0 start-0 p-4 z-10">
+        <img src="./img/restlesspedals-cut.png" alt="Restless Pedals Logo" class="logo-overlay"
+          style="height: 90px; width: auto; filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));">
+      </div>
+
+      <!-- Title - Top Center -->
+      <div class="text-center mt-5 pt-5 pt-md-0 z-10 flex-shrink-0">
+        <h1 class="display-2 display-md-1 fw-bold text-white mb-0" style="text-shadow: 3px 3px 12px rgba(0,0,0,0.6);">
+          Restless Pedals
+        </h1>
+      </div>
+
+      <!-- Spacer that pushes CTAs to bottom -->
+      <div class="flex-grow-1"></div>
+
+      <!-- Bottom Content: Description + Buttons -->
+      <div class="container pb-5 mb-4 z-10">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <p class="lead text-white mb-4 opacity-90"
+              style="font-size: 1.4rem; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
+              Embark on thrilling cycling journeys to real-world travel destinations.<br>
+              Manage your resources, strategize routes, and connect with fellow adventurers.
+            </p>
+
+            <div class="d-flex flex-column flex-sm-row gap-4 justify-content-center align-items-center">
+              <a href="https://play.google.com/store/apps/details?id=com.lovin.restlesspedals"
+                class="btn btn-primary btn-lg px-5 py-3 shadow-lg" target="_blank">
+                <i class="fab fa-google-play me-2"></i> Play Now on Google Play
+              </a>
+              <a href="https://www.patreon.com/restlesspedals" class="btn btn-outline-light btn-lg px-5 py-3 shadow-lg"
+                target="_blank">
+                <i class="fab fa-patreon me-2"></i> Support on Patreon
+              </a>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Controls -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#multiScreenshotCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#multiScreenshotCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
 
-      <!-- Optional: Indicators -->
-      <div class="carousel-indicators position-relative mt-3">
-        <button type="button" data-bs-target="#multiScreenshotCarousel" data-bs-slide-to="0" class="active bg-dark"></button>
-        <button type="button" data-bs-target="#multiScreenshotCarousel" data-bs-slide-to="1" class="bg-dark"></button>
+    <!-- Features Section -->
+    <section class="py-5 textured-background">
+      <div class="container">
+        <h2 class="text-center mb-5">Discover the Adventure</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4 animate-slide-up">
+            <div class="card h-100 text-center border-0 shadow-sm">
+              <div class="card-body">
+                <i class="fas fa-cogs fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Resource Management</h5>
+                <p class="card-text">Balance your inventory of gear, food, and tools while facing tough choices on what
+                  to pack for the road ahead.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4 animate-slide-up" style="animation-delay: 0.2s;">
+            <div class="card h-100 text-center border-0 shadow-sm">
+              <div class="card-body">
+                <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Map-Based Strategy</h5>
+                <p class="card-text">Plan routes inspired by real EuroVelo paths, adapting to terrain, weather, and
+                  unexpected events.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4 animate-slide-up" style="animation-delay: 0.4s;">
+            <div class="card h-100 text-center border-0 shadow-sm">
+              <div class="card-body">
+                <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Community Interactions</h5>
+                <p class="card-text">Trade items, share tips, and compete with players worldwide in this online idle
+                  experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+
+    <!-- Gallery Section - Multi-Image Carousel -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-5 fw-bold">See It in Action</h2>
+
+        <div id="multiScreenshotCarousel" class="carousel slide shadow-lg rounded-3 overflow-hidden"
+          data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="row g-3 g-md-4 justify-content-center align-items-center px-4 py-5">
+                <div class="col-6 col-md-4">
+                  <img src="./img/1_bikes.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait"
+                    alt="Select your bike">
+                  <p class="text-center mt-2 mb-0 small text-muted fw-medium">Choose Your Bike</p>
+                </div>
+                <div class="col-6 col-md-4">
+                  <img src="./img/2_bags.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait"
+                    alt="Pack your bags">
+                  <p class="text-center mt-2 mb-0 small text-muted fw-medium">Pack Smart</p>
+                </div>
+                <div class="col-6 col-md-4 d-none d-md-block">
+                  <img src="./img/3_inventory.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait"
+                    alt="Manage inventory">
+                  <p class="text-center mt-2 mb-0 small text-muted fw-medium">Manage Inventory</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="row g-3 g-md-4 justify-content-center align-items-center px-4 py-5">
+                <div class="col-6 col-md-4">
+                  <img src="./img/4_market.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait"
+                    alt="In-game market">
+                  <p class="text-center mt-2 mb-0 small text-muted fw-medium">Global Market</p>
+                </div>
+                <div class="col-6 col-md-4">
+                  <img src="./img/5_cafe.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait"
+                    alt="Meet players at cafes">
+                  <p class="text-center mt-2 mb-0 small text-muted fw-medium">Café Encounters</p>
+                </div>
+                <div class="col-6 col-md-4 d-none d-md-block">
+                  <img src="./img/8_knowledge.png" class="img-fluid rounded-3 shadow-sm screenshot-portrait"
+                    alt="Knowledge skill tree">
+                  <p class="text-center mt-2 mb-0 small text-muted fw-medium">Knowledge Tree</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#multiScreenshotCarousel"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#multiScreenshotCarousel"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+
+          <!-- Optional: Indicators -->
+          <div class="carousel-indicators position-relative mt-3">
+            <button type="button" data-bs-target="#multiScreenshotCarousel" data-bs-slide-to="0"
+              class="active bg-dark"></button>
+            <button type="button" data-bs-target="#multiScreenshotCarousel" data-bs-slide-to="1"
+              class="bg-dark"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 text-center textured-background">
+      <div class="container">
+        <h2 class="mb-4">Ready to Pedal?</h2>
+        <p class="lead mb-4">Join the community and start your adventure today!</p>
+        <a href="https://play.google.com/store/apps/details?id=com.lovin.restlesspedals"
+          class="btn btn-primary btn-lg me-3" target="_blank">
+          <i class="fab fa-google-play me-2"></i> Download Now
+        </a>
+        <a href="https://www.patreon.com/restlesspedals" class="btn btn-outline-primary btn-lg" target="_blank">
+          <i class="fab fa-patreon me-2"></i> Become a Patron
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+          <img src="./img/restlesspedals-round.webp" class="d-block" width="30" height="30" alt="RestlessPedals" />
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Restless Pedals</span>
+      </div>
+      <a href="./legal/privacy-policy.html">Privacy Policy</a>
+      <a href="./legal/terms-and-conditions.html">Terms and Conditions</a>
+      <div class="social-links">
+        <a href="https://www.patreon.com/c/RestlessPedals" aria-label="Support me on Patreon" target="_blank">
+          <i class="fab fa-patreon social-icon"></i>
+        </a>
+        <a href="https://twitter.com/RestlessPedals" aria-label="Follow me on Twitter" target="_blank">
+          <i class="fab fa-twitter social-icon"></i>
+        </a>
+        <a href="https://youtube.com/@RestlessPedals" aria-label="Follow me on YouTube" target="_blank">
+          <i class="fab fa-youtube social-icon"></i>
+        </a>
+        <a href="https://www.instagram.com/restlesspedals" aria-label="Follow me on Instagram" target="_blank">
+          <i class="fab fa-instagram social-icon"></i>
+        </a>
+        <a href="https://pinterest.com/restlesspedals/" aria-label="Discover my Pinterest pins" target="_blank">
+          <i class="fab fa-pinterest social-icon"></i>
+        </a>
+        <a href="https://restlesspedals.eu/" aria-label="Read my blog" target="_blank">
+          <i class="fab fa-blogger social-icon"></i>
+        </a>
+        <a href="https://www.polarsteps.com/RestlessPedals" aria-label="Follow me on Polarsteps" target="_blank">
+          <img src="./img/Polarsteps.svg" alt="Polarsteps" class="social-icon">
+        </a>
+        <a href="https://substack.com/@restlesspedals" aria-label="Read my Substack" target="_blank">
+          <img src="./img/substack.png" alt="Substack" class="social-icon black-icon">
+        </a>
+      </div>
+    </footer>
   </div>
-</section>
 
-  <!-- CTA Section -->
-  <section class="py-5 text-center textured-background">
-    <div class="container">
-      <h2 class="mb-4">Ready to Pedal?</h2>
-      <p class="lead mb-4">Join the community and start your adventure today!</p>
-      <a href="https://play.google.com/store/apps/details?id=com.lovin.restlesspedals" class="btn btn-primary btn-lg me-3" target="_blank">
-        <i class="fab fa-google-play me-2"></i> Download Now
-      </a>
-      <a href="https://www.patreon.com/restlesspedals" class="btn btn-outline-primary btn-lg" target="_blank">
-        <i class="fab fa-patreon me-2"></i> Become a Patron
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-        <img src="./img/restlesspedals-round.webp" class="d-block" width="30" height="30" alt="RestlessPedals" />
-      </a>
-      <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Restless Pedals</span>
-    </div>
-    <a href="./legal/privacy-policy.html">Privacy Policy</a>
-    <a href="./legal/terms-and-conditions.html">Terms and Conditions</a>
-    <div class="social-links">
-      <a href="https://www.patreon.com/c/RestlessPedals" aria-label="Support me on Patreon" target="_blank">
-        <i class="fab fa-patreon social-icon"></i>
-      </a>
-      <a href="https://twitter.com/RestlessPedals" aria-label="Follow me on Twitter" target="_blank">
-        <i class="fab fa-twitter social-icon"></i>
-      </a>
-      <a href="https://youtube.com/@RestlessPedals" aria-label="Follow me on YouTube" target="_blank">
-        <i class="fab fa-youtube social-icon"></i>
-      </a>
-      <a href="https://www.instagram.com/restlesspedals" aria-label="Follow me on Instagram" target="_blank">
-        <i class="fab fa-instagram social-icon"></i>
-      </a>
-      <a href="https://pinterest.com/restlesspedals/" aria-label="Discover my Pinterest pins" target="_blank">
-        <i class="fab fa-pinterest social-icon"></i>
-      </a>
-      <a href="https://restlesspedals.eu/" aria-label="Read my blog" target="_blank">
-        <i class="fab fa-blogger social-icon"></i>
-      </a>
-      <a href="https://www.polarsteps.com/RestlessPedals" aria-label="Follow me on Polarsteps" target="_blank">
-        <img src="./img/Polarsteps.svg" alt="Polarsteps" class="social-icon">
-      </a>
-    </div>
-  </footer>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

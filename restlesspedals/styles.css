@@ -185,3 +185,9 @@ h1 img {
   #infiniteCarousel .col-lg-4 { flex: 0 0 100%; max-width: 100%; }
   .screenshot-portrait { max-height: 65vh; }
 }
+
+.black-icon {
+  filter: brightness(0%);
+  /* or even more reliable in some cases: */
+  /* filter: brightness(0) saturate(0); */
+}
